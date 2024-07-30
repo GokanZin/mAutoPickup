@@ -1,0 +1,3 @@
+name: mModos
+version: '${version}'
+main: br.com.gokan.mmodos.Main
