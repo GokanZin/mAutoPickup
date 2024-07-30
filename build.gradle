@@ -18,7 +18,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/craftbukkit-1.7.10-R.jar")
+//    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/craftbukkit-1.7.10-R.jar")
+    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/spigot-1.12.2.jar")
     compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/Vault (1).jar')
     compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/modid.jar')
     compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/CustomNPC-Plus-1.9.3.jar')

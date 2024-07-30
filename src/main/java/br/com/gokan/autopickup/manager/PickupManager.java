@@ -5,11 +5,14 @@ import br.com.gokan.autopickup.caches.PickupCaches;
 import br.com.gokan.autopickup.controller.PickupController;
 import br.com.gokan.autopickup.controller.model.CustomDrop;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,21 +42,23 @@ public class PickupManager {
 
     public void onOnBlockBreak( Player player, BlockBreakEvent event ){
         Block block = event.getBlock();
-        if (!hasWorld(player)) return;
+        if (hasWorld(player)) return;
+        if (player.getItemInHand().getType().equals(Material.AIR)) return;
         List<PickupController> loadC = caches.getCachesBlocks();
         Optional<PickupController> filter = loadC.stream().filter(pickupController -> pickupController.getMaterial().equals(block.getType()) && pickupController.getData().equals(block.getData())).findFirst();
 
         if (filter.isPresent()){
             PickupController pickupController = filter.get();
             if (pickupController.hasOptions()){
-                if (pickupController.getOptions().hasDesativeDrop()){
-                    event.getBlock().getDrops().clear();
+                if (!pickupController.getOptions().hasDesativeDrop()){
+                    player.getInventory().addItem(event.getBlock().getDrops().toArray(new ItemStack[0]));
                 }
                 if (pickupController.getOptions().hasCustomDrops()){
                     List<CustomDrop> customDrops = pickupController.getOptions().getCustomDrops();
                     customDrops.forEach(customDrop -> customDrop.executeActions(player));
                 }
             }
+            main.dropsType.cancelDrops(event);
         }
 
     }

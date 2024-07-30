@@ -87,7 +87,7 @@ public class PickupCaches {
                         optionsModel.setDesativeDrop(disableDrop);
                     }
                     if (options.contains("customDrop")){
-                        List<String> customDrop = section.getStringList("customDrop");
+                        List<String> customDrop = options.getStringList("customDrop");
                         List<CustomDrop> customDrops = getCustomDrops(customDrop, sender);
                         if (customDrops != null && !customDrops.isEmpty()){
                             optionsModel.setCustomDrops(customDrops);
@@ -112,7 +112,7 @@ public class PickupCaches {
                 ConfigurationSection section = drops.getConfigurationSection(customDrop);
                 if (section != null){
                     Double chance = section.getDouble("chance", 0);
-                    String actions = section.getString("actions");
+                    List<String> actions = section.getStringList("action");
                     if (actions != null && !actions.isEmpty()){
                         CustomDrop customDrop1 = new CustomDrop(chance, actions);
                         customDrops.add(customDrop1);

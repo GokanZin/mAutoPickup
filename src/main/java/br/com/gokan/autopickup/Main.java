@@ -1,7 +1,9 @@
 package br.com.gokan.autopickup;
 
+import br.com.gokan.autopickup.command.AdmCommands;
 import br.com.gokan.autopickup.listeners.BlockBreak;
 import br.com.gokan.autopickup.manager.PickupManager;
+import br.com.gokan.autopickup.utils.CancelDropsVersions;
 import br.com.gokan.autopickup.utils.ColorConsole;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -15,6 +17,7 @@ public final class Main extends JavaPlugin {
     String prefix = "mAutoPickup";
     PickupManager pickupManager;
     static YamlConfiguration customdrops;
+    public CancelDropsVersions dropsType;
     @Override
     public void onLoad() {
         reload();
@@ -42,9 +45,11 @@ public final class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage( ColorConsole.GREEN + "Plugin foi inicializado com sucesso!" + ColorConsole.RESET);
         Bukkit.getConsoleSender().sendMessage(ColorConsole.GREEN + " Criador: [Gokan]" + ColorConsole.RESET);
         Bukkit.getConsoleSender().sendMessage(ColorConsole.GREEN + " Suporte: https://discord.gg/22gnYtuTTs" + ColorConsole.RESET);
+        dropsType = new CancelDropsVersions(this);
         Bukkit.getConsoleSender().sendMessage(ColorConsole.GREEN + "Config Loader:" + ColorConsole.RESET);
         pickupManager = new PickupManager(this);
         this.getServer().getPluginManager().registerEvents(new BlockBreak(this), this);
+        new AdmCommands(this);
         Bukkit.getConsoleSender().sendMessage(ColorConsole.GREEN + "-------------------------" + ColorConsole.RESET);
         Bukkit.getConsoleSender().sendMessage(ColorConsole.GREEN + "<-------[" + prefix + "]------->" + ColorConsole.RESET);
     }
