@@ -1,6 +1,6 @@
-package br.com.gokan.mmodos.command;
+package br.com.gokan.autopickup.command;
 
-import br.com.gokan.mmodos.utils.builders.CommandBuilder;
+import br.com.gokan.autopickup.utils.builders.CommandBuilder;
 
 public class AdmCommands {
 

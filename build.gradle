@@ -18,7 +18,21 @@ repositories {
 }
 
 dependencies {
-    compileOnly "org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT"
+    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/craftbukkit-1.7.10-R.jar")
+    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/Vault (1).jar')
+    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/modid.jar')
+    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/CustomNPC-Plus-1.9.3.jar')
+    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/addonDBC.jar')
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+
+
+jar {
+    archiveFileName.set("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Servidor_Teste/plugins/mAutoPickup.jar")
+    archiveFileName.set("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Servidor_Teste/plugins/worldguard-6.2.jar")
+
 }
 
 def targetJavaVersion = 8

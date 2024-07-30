@@ -1,20 +1,17 @@
-package br.com.gokan.mmodos.manager;
+package br.com.gokan.autopickup.manager;
 
-import br.com.gokan.mmodos.Main;
-import br.com.gokan.mmodos.caches.PickupCaches;
-import br.com.gokan.mmodos.controller.PickupController;
-import br.com.gokan.mmodos.controller.model.CustomDrop;
-import br.com.gokan.mmodos.listeners.BlockBreak;
+import br.com.gokan.autopickup.Main;
+import br.com.gokan.autopickup.caches.PickupCaches;
+import br.com.gokan.autopickup.controller.PickupController;
+import br.com.gokan.autopickup.controller.model.CustomDrop;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class PickupManager {
 

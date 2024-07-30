@@ -1,7 +1,6 @@
-package br.com.gokan.mmodos.listeners;
+package br.com.gokan.autopickup.listeners;
 
-import br.com.gokan.mmodos.Main;
-import org.bukkit.block.Block;
+import br.com.gokan.autopickup.Main;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

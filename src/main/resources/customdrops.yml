@@ -1,0 +1,19 @@
+# custom action
+
+
+#types action
+#'chat, actiobar, title, subtitle, sound, command, money'
+
+drops:
+  drop1:
+    chance: 10 # chance de 10% para ser executado.
+    action:  #função que sera acionada apos a chance ser aceita.
+      - 'chat: &aVocê ganhou 100 de money'
+      - 'command: give %player% diamond 1'
+      - 'money: 100 %player%'
+  drop2:
+    chance: 50 # chance de 50% para ser executado.
+    action:  #função que sera acionada apos a chance ser aceita.
+      - 'chat: &aVoce pegou um item especial!'
+      - 'command: give %player% diamond 1'
+      - 'money: 1000 %player%'

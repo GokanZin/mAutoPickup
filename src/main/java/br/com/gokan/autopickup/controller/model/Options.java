@@ -1,4 +1,4 @@
-package br.com.gokan.mmodos.controller.model;
+package br.com.gokan.autopickup.controller.model;
 
 import java.util.List;
 

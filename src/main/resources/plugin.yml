@@ -1,3 +1,3 @@
-name: mModos
+name: mAutoPickup
 version: '${version}'
-main: br.com.gokan.mmodos.Main
+main: br.com.gokan.autopickup.Main

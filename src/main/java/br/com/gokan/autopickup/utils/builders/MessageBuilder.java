@@ -1,4 +1,4 @@
-package br.com.gokan.mmodos.utils.builders;
+package br.com.gokan.autopickup.utils.builders;
 
 import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;

@@ -1,8 +1,7 @@
-package br.com.gokan.mmodos.utils.builders;
+package br.com.gokan.autopickup.utils.builders;
 
-import br.com.gokan.mmodos.utils.commandframework.CommandHandler;
-import br.com.gokan.mmodos.utils.commandframework.CommandRegistry;
-import br.com.gokan.mmodos.utils.commandframework.CustomSender;
+import br.com.gokan.autopickup.utils.commandframework.CommandHandler;
+import br.com.gokan.autopickup.utils.commandframework.CommandRegistry;
 import org.bukkit.command.CommandSender;
 
 import java.util.function.BiFunction;

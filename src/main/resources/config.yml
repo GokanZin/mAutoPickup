@@ -1,0 +1,24 @@
+worldDisables: #desativar os mundos especificos
+  - world_nether
+  - world_the_end
+
+
+itemPickups:
+  blockStone:
+    id: stone #id do material
+    data: 3 #data do item
+    xp: 10 #add custom xp
+    options:
+      regions: #regioes onde o bloco pode ser quebrado.
+        - 'spawn'
+        - 'pvp'
+      disableDrop: true #desativar drop do item
+      customDrop:
+        - 'drop1'
+
+  blockIron:
+    id: stone #id do material
+    data: 3 #data do item
+    options:
+      customDrop:
+        - 'drop1'

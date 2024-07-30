@@ -1,4 +1,4 @@
-package br.com.gokan.mmodos.utils.commandframework;
+package br.com.gokan.autopickup.utils.commandframework;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

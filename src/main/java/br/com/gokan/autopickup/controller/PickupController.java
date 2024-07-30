@@ -1,10 +1,7 @@
-package br.com.gokan.mmodos.controller;
+package br.com.gokan.autopickup.controller;
 
-import br.com.gokan.mmodos.controller.model.CustomDrop;
-import br.com.gokan.mmodos.controller.model.Options;
+import br.com.gokan.autopickup.controller.model.Options;
 import org.bukkit.Material;
-
-import java.util.List;
 
 public class PickupController {
 

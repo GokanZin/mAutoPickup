@@ -1,13 +1,10 @@
-package br.com.gokan.mmodos;
+package br.com.gokan.autopickup;
 
-import br.com.gokan.mmodos.listeners.BlockBreak;
-import br.com.gokan.mmodos.manager.PickupManager;
-import br.com.gokan.mmodos.utils.ColorConsole;
-import br.com.gokan.mmodos.utils.builders.CommandBuilder;
-import br.com.gokan.mmodos.utils.commandframework.CommandRegistry;
+import br.com.gokan.autopickup.listeners.BlockBreak;
+import br.com.gokan.autopickup.manager.PickupManager;
+import br.com.gokan.autopickup.utils.ColorConsole;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
