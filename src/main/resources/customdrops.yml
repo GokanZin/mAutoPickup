@@ -16,4 +16,3 @@ drops:
     action:  #função que sera acionada apos a chance ser aceita.
       - 'chat: &aVoce pegou um item especial!'
       - 'command: give %player% diamond 1'
-      - 'money: 1000 %player%'

@@ -1,18 +1,22 @@
 package br.com.gokan.autopickup.utils;
 
 import br.com.gokan.autopickup.Main;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.lang.reflect.Method;
 
-public class CancelDropsVersions {
+public class UtilsVersions {
 
     private final Main main;
     Boolean version1_12x;
 
-    public CancelDropsVersions(Main main) {
+    public UtilsVersions( Main main) {
         this.main = main;
         this.version1_12x = hasMethod(BlockBreakEvent.class, "setDropItems");
 
@@ -20,7 +24,6 @@ public class CancelDropsVersions {
 
     public void cancelDrops(BlockBreakEvent event){
         boolean hasSetDropItemsMethod = hasMethod(BlockBreakEvent.class, "setDropItems");
-        System.out.println("BlockBreakEvent has setDropItems method: " + hasSetDropItemsMethod);
         if (version1_12x) {
             cancelDrops1_12x(event);
         } else {
@@ -53,5 +56,48 @@ public class CancelDropsVersions {
         }
     }
 
+
+    public Boolean verifyInventory(Player player, ItemStack item) {
+        if (version1_12x) {
+            return verifyInventory1_12x(player, item);
+        } else {
+           return verifyInventory1_7x(player, item);
+        }
+    }
+
+     boolean verifyInventory1_12x( Player player, ItemStack item ) {
+        PlayerInventory inventory = player.getInventory();
+        int maxStackSize = item.getMaxStackSize();
+        int amount = item.getAmount();
+        for (ItemStack slot : inventory.getStorageContents()) {
+            if (slot == null || slot.getType() == Material.AIR) {
+                return true;
+            } else if (slot.isSimilar(item)) {
+                int totalAmount = slot.getAmount() + amount;
+                if (totalAmount <= maxStackSize) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+     boolean verifyInventory1_7x( Player player, ItemStack item ) {
+        PlayerInventory inventory = player.getInventory();
+        int maxStackSize = item.getMaxStackSize();
+        int amount = item.getAmount();
+        for (ItemStack slot : inventory.getContents()){
+            if (slot == null || slot.getType() == Material.AIR) {
+                return true;
+            } else if (slot.isSimilar(item)) {
+                int totalAmount = slot.getAmount() + amount;
+                if (totalAmount <= maxStackSize) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 }

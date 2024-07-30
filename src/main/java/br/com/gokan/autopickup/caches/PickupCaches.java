@@ -73,6 +73,7 @@ public class PickupCaches {
                 int xpAmount = section.getInt("xp", 0);
                 ItemStack stack = new ItemBuilder(id, (byte) data).build();
                 Boolean disableDrop = false;
+                Boolean forceBlock = section.getBoolean("forceBlock", false);
                 Options optionsModel = null;
                 if (section.contains("options")) {
                     optionsModel = new Options();
@@ -88,17 +89,16 @@ public class PickupCaches {
                     }
                     if (options.contains("customDrop")){
                         List<String> customDrop = options.getStringList("customDrop");
-                        List<CustomDrop> customDrops = getCustomDrops(customDrop, sender);
+                        List<CustomDrop> customDrops = getCustomDrops1(customDrop, sender);
                         if (customDrops != null && !customDrops.isEmpty()){
                             optionsModel.setCustomDrops(customDrops);
                         }
                     }
                 }
-                PickupController pickupContrroler = new PickupController(xpAmount, stack.getType(), stack.getData().getData(), optionsModel);
+                PickupController pickupContrroler = new PickupController(xpAmount, stack.getType(), stack.getData().getData(), optionsModel, forceBlock);
                 cachesBlocks.add(pickupContrroler);
             }
         }
-        sender.sendMessage("[§c!§f] §d" + cachesBlocks.size() + " item pickups were initialized");
     }
 
     List<CustomDrop> getCustomDrops( List<String> custom, CommandSender sender){
@@ -121,10 +121,41 @@ public class PickupCaches {
                         continue;
                     }
                 }
-            }else {
-               sender.sendMessage("§c[!] §fThe custom drop " + customDrop + " was not found in the customdrops.yml file");
             }
         }
+        return customDrops;
+    }
+
+
+
+    List<CustomDrop> getCustomDrops1( List<String> dropsCustom, CommandSender sender){
+        if (!getDropsConfig().contains("drops")) {
+            return null;
+        }
+        ConfigurationSection dropConfig = getDropsConfig().getConfigurationSection("drops");
+        List<CustomDrop> customDrops = new ArrayList<>();
+        for (String drop : dropsCustom){
+            if (!dropConfig.contains(drop)){
+                sender.sendMessage("§c[!] §fThe custom drop " + drop + " was not found in the customdrops.yml");
+                continue;
+            }
+            ConfigurationSection section = dropConfig.getConfigurationSection(drop);
+            if (section != null){
+                Double chance = section.getDouble("chance", 0);
+                List<String> actions = section.getStringList("action");
+                if (actions != null && !actions.isEmpty()){
+                    CustomDrop customDrop1 = new CustomDrop(chance, actions);
+                    customDrops.add(customDrop1);
+                }else {
+                    sender.sendMessage("§c[!] §fThe actions field is required in the custom drop " + drop);
+                    continue;
+                }
+            }
+
+        }
+
+
+
         return customDrops;
     }
 

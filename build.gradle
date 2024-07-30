@@ -15,15 +15,18 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+
 }
 
 dependencies {
 //    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/craftbukkit-1.7.10-R.jar")
+//    compileOnly 'org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+
+//    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/paper20.jar")
     compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/spigot-1.12.2.jar")
+    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/worldguard-6.2.jar")
+    compileOnly files("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/worldedit-bukkit-6.1.9.jar")
     compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/Vault (1).jar')
-    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/modid.jar')
-    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/CustomNPC-Plus-1.9.3.jar')
-    compileOnly files('C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Dependencias/addonDBC.jar')
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
@@ -31,8 +34,7 @@ dependencies {
 
 
 jar {
-    archiveFileName.set("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Servidor_Teste/plugins/mAutoPickup.jar")
-    archiveFileName.set("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/Servidor_Teste/plugins/worldguard-6.2.jar")
+    archiveFileName.set("C:/Users/Pedro/Desktop/Projeto_Plugins_Vender/server/plugins/mAutoPickup.jar")
 
 }
 

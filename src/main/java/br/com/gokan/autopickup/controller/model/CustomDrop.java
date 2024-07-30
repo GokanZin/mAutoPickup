@@ -1,6 +1,9 @@
 package br.com.gokan.autopickup.controller.model;
 
+import br.com.gokan.autopickup.api.ActionBar;
+import br.com.gokan.autopickup.api.VaultAPI;
 import br.com.gokan.autopickup.utils.OtherUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -25,13 +28,16 @@ public class CustomDrop {
     }
 
     void sendChat( Player player ){
-        if (!hasAction("chat")) return;
-
-
+        Optional<String> value = actions.stream().filter(x -> x.startsWith("chat")).findFirst();
+        if (value.isPresent()){
+            player.sendMessage(value.get().replace("chat:", "").replace("chat", "").replace("&", "§"));
+        }
     }
     void sendBar( Player player ){
-        if (!hasAction("actiobar")) return;
-
+        Optional<String> value = actions.stream().filter(x -> x.startsWith("actionbar")).findFirst();
+        if (value.isPresent()){
+            ActionBar.send(player, value.get().replace("actionbar:", "").replace("actionbar", "").replace("&", "§"));
+        }
     }
     void sendTitle( Player player ){
         Optional<String> title = actions.stream()
@@ -45,18 +51,29 @@ public class CustomDrop {
                 .findFirst();
 
         if (title.isPresent() || subtitle.isPresent()){
-            player.sendTitle(title.orElse(""), subtitle.orElse(""));
+            player.sendTitle(title.orElse("").replace("&", "§"), subtitle.orElse("").replace("&", "§"));
         }
     }
 
     void giveMoney(Player player){
-        if (!hasAction("money"));
+        if (!hasAction("money")) return;
+        Optional<String> value = actions.stream().filter(x -> x.startsWith("money")).findFirst();
+        if (value.isPresent()){
+            Double money = OtherUtils.extractDouble(value.get());
+            if (VaultAPI.getEconomy() != null){
+                VaultAPI.getEconomy().depositPlayer(player, money);
+            }
         }
+    }
     void executeCommands(Player player){
-        if (hasAction("commands") || hasAction("command") || hasAction("comand")){
+        actions.stream()
+                .filter(x -> x.startsWith("command") || x.startsWith("commands") || x.startsWith("comand"))
+                .map(x -> x.replace("command: ", "").replace("command", "").replace("commands", "").replace("comand", "").replace(":",""))
+                .forEach(x -> {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), x.replace("%player%", player.getName()));
+                });
+        return;
 
-            return;
-        }
     }
 
     public void executeActions(Player player){

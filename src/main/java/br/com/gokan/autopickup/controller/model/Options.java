@@ -19,8 +19,8 @@ public class Options {
         return regionNames;
     }
 
-    public boolean inRegion( String regionName ){
-        return regionNames.contains(regionName);
+    public Boolean hasRegionNames() {
+        return regionNames != null;
     }
 
     public List<CustomDrop> getCustomDrops() {

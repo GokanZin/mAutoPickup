@@ -1,24 +1,42 @@
-worldDisables: #desativar os mundos especificos
+messages:
+  inventoryFull: '&cYou do not have enough space in your inventory to pick up this item.'
+  enable: '&aItemPickups has been enabled.'
+  disable: '&cItemPickups has been disabled.'
+  noPermission: '&cYou do not have permission to do this.'
+  reload: '&aItemPickups has been reloaded.'
+  commands:
+    - ''
+    - ' /autopickup enable - Enable itemPickups.'
+    - ' /autopickup disable - Disable itemPickups.'
+    - ''
+
+#permissions:
+  # mautopickup.enable
+  # mautopickup.forceEnable #permission to auto activate itemPickup for the player:
+
+#mautopickup.adm #admin permission
+
+worldDisables: #disable specific worlds
   - world_nether
   - world_the_end
 
-
 itemPickups:
   blockStone:
-    id: stone #id do material
-    data: 3 #data do item
+    id: stone #material name or id.
+    data: 3 #1.8x and above, use the material name in the id.
     xp: 10 #add custom xp
+    forceNoBreak: true #Force the player to not break the block if they have a full inventory
     options:
-      regions: #regioes onde o bloco pode ser quebrado.
+      regions: #regions where the block can be broken.
         - 'spawn'
         - 'pvp'
-      disableDrop: true #desativar drop do item
+      disableDrop: true #disable item drop
       customDrop:
         - 'drop1'
 
   blockIron:
-    id: stone #id do material
-    data: 3 #data do item
+    id: stone #material id
+    data: 3 #item data
     options:
       customDrop:
         - 'drop1'

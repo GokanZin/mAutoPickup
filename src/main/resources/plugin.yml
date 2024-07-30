@@ -1,3 +1,7 @@
 name: mAutoPickup
 version: '${version}'
 main: br.com.gokan.autopickup.Main
+softdepend:
+  - WorldGuard
+  - WorldEdit
+  - Vault
